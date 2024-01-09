@@ -15,19 +15,19 @@ namespace API.Extensions
         public static IServiceCollection AddIdentitySerivces(this IServiceCollection services, IConfiguration config)
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
+           .AddJwtBearer(options =>
+               {
+                   options.TokenValidationParameters = new TokenValidationParameters
+                   {
 
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Tokenkey"])),
-            ValidateAudience = false,
-            ValidateIssuer = false
+                       ValidateIssuerSigningKey = true,
+                       IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Tokenkey"])),
+                       ValidateAudience = false,
+                       ValidateIssuer = false
 
-        };
+                   };
 
-    });
+               });
 
             return services;
 
